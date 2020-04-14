@@ -1,22 +1,17 @@
 ###################
-What is CodeIgniter
+App_Cashier
 ###################
 
-CodeIgniter is an Application Development Framework - a toolkit - for people
-who build web sites using PHP. Its goal is to enable you to develop projects
-much faster than you could if you were writing code from scratch, by providing
-a rich set of libraries for commonly needed tasks, as well as a simple
-interface and logical structure to access these libraries. CodeIgniter lets
-you creatively focus on your project by minimizing the amount of code needed
-for a given task.
+App_Cashier adaah sebuah aplikasi transaksi penjualan berbasis web yg ditujukan untuk sebuah pertokoan. Aplikasi tersebut masih proses pengembangan dan untuk selanjutnya akan terus diperbaiki fitur - fiturnya
 
 *******************
-Release Information
+Fitur
 *******************
 
-This repo contains in-development code for future releases. To download the
-latest stable release please visit the `CodeIgniter Downloads
-<https://codeigniter.com/download>`_ page.
+1. Login
+2. Manajemen Barang sesuai Kategori
+3. Manajemen Transaksi
+4. Laporan
 
 **************************
 Changelog and New Features
@@ -36,35 +31,14 @@ such old versions of PHP, because of potential security and performance
 issues, as well as missing features.
 
 ************
-Installation
+Editor
 ************
 
-Please see the `installation section <https://codeigniter.com/user_guide/installation/index.html>`_
-of the CodeIgniter User Guide.
+- Seseorang yg masih belajar pemrograman
+- RH_GHZ
 
-*******
-License
-*******
+************
+CP
+************
 
-Please see the `license
-agreement <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/license.rst>`_.
-
-*********
-Resources
-*********
-
--  `User Guide <https://codeigniter.com/docs>`_
--  `Language File Translations <https://github.com/bcit-ci/codeigniter3-translations>`_
--  `Community Forums <http://forum.codeigniter.com/>`_
--  `Community Wiki <https://github.com/bcit-ci/CodeIgniter/wiki>`_
--  `Community Slack Channel <https://codeigniterchat.slack.com>`_
-
-Report security issues to our `Security Panel <mailto:security@codeigniter.com>`_
-or via our `page on HackerOne <https://hackerone.com/codeigniter>`_, thank you.
-
-***************
-Acknowledgement
-***************
-
-The CodeIgniter team would like to thank EllisLab, all the
-contributors to the CodeIgniter project and you, the CodeIgniter user.
+- Apabila ada pertanyaan langsung hubungi email "raden.hadzi@gmail.com"
