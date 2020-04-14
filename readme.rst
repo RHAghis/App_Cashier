@@ -13,12 +13,6 @@ Fitur
 3. Manajemen Transaksi
 4. Laporan
 
-**************************
-Changelog and New Features
-**************************
-
-You can find a list of all changes for each release in the `user
-guide change log <https://github.com/bcit-ci/CodeIgniter/blob/develop/user_guide_src/source/changelog.rst>`_.
 
 *******************
 Server Requirements
@@ -36,6 +30,7 @@ Editor
 
 - Seseorang yg masih belajar pemrograman
 - RH_GHZ
+
 
 ************
 CP
