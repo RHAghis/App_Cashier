@@ -1,0 +1,16 @@
+
+.row-total {
+  	display: flex;
+  	flex-wrap: wrap;
+  	margin-left: -15px; }
+
+.row-right {
+	position: absolute;
+  	right: 0;	
+  	float: right;
+  	margin-right: 0px }
+
+.obj-right {
+  	right: 0;	
+  	float: right;
+  	margin-right: -15px }
