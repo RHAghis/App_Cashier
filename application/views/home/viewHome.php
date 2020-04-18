@@ -54,8 +54,7 @@
                     </div>
                     <div class="col-5 align-self-center">
                         <div class="customize-input float-right">
-                            <select id="blnNow" class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
-                                <option selected></option>
+                            <select id="blnNow" name="blnNow" class="custom-select custom-select-set form-control bg-white border-0 custom-shadow custom-radius">
                             </select>
                         </div>
                     </div>
@@ -72,30 +71,13 @@
                 <!-- Start First Cards -->
                 <!-- *************************************************************** -->
                 <div class="card-group">
-                    <!-- <div class="card border-right">
-                        <div class="card-body">
-                            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">236</h2>
-                                        <span
-                                            class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">+18.33%</span>
-                                    </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Clients</h6>
-                                </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="card border-right">
                         <div class="card-body">
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><sup
-                                            class="set-doller">$</sup>18,306</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Earnings of Month
+                                            class="set-doller">Rp</sup>18,306</h2>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Pendapatan PerBulan
                                     </h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
@@ -109,27 +91,12 @@
                             <div class="d-flex d-lg-flex d-md-block align-items-center">
                                 <div>
                                     <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium">1538</h2>
-                                        <span
-                                            class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">-18.33%</span>
+                                        <h2 class="text-dark mb-1 font-weight-medium"><p id="demo"></p></h2>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Projects</h6>
+                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Transaksi PerBulan</h6>
                                 </div>
                                 <div class="ml-auto mt-md-3 mt-lg-0">
                                     <span class="opacity-7 text-muted"><i data-feather="file-plus"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div>
-                                    <h2 class="text-dark mb-1 font-weight-medium">864</h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Projects</h6>
-                                </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
                                 </div>
                             </div>
                         </div>
@@ -551,31 +518,99 @@
     <?php $this->load->view('viewScript'); ?>
 
     <script type="text/javascript">
+        $(document).ready(function(){
 
-        getMonth();
+            getMonth();
+            //getPendpatanPerBulan();
 
-        function getMonth() {
-            var month = new Array();
-            month[0] = "Jan";
-            month[1] = "Feb";
-            month[2] = "Mar";
-            month[3] = "Apr";
-            month[4] = "May";
-            month[5] = "Jun";
-            month[6] = "Jul";
-            month[7] = "Aug";
-            month[8] = "Sep";
-            month[9] = "Oct";
-            month[10] = "Nov";
-            month[11] = "Dec";
-            var today = new Date();
-            var bln = month[today.getMonth()];
-            var thn = today.getFullYear().toString().substr(-2);
-            var hsl = bln+' '+thn;
-            document.getElementById('blnNow').selectedIndex = 0;
-            document.getElementById('blnNow').value = hsl;
-            console.log('Bulan Now : ', hsl)
-        }
+            function getMonth() {
+                var today = new Date();
+                var month = new Array();
+                month[0] = "Jan";
+                month[1] = "Feb";
+                month[2] = "Mar";
+                month[3] = "Apr";
+                month[4] = "May";
+                month[5] = "Jun";
+                month[6] = "Jul";
+                month[7] = "Aug";
+                month[8] = "Sep";
+                month[9] = "Oct";
+                month[10] = "Nov";
+                month[11] = "Dec";
+        
+                $.ajax(
+                {
+                    url : '<?php echo site_url()?>/Home/getMonth',
+                    async : true,
+                    dataType : 'json',
+                    success: function(data){
+                         
+                        var html = '';
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            var fullDate = data[i].tgl;
+                            var extractDate = fullDate.split("-");
+                            var bulanExt = parseInt(extractDate[1]);
+                            var thnExt = parseInt(extractDate[0]);
+                            var bulanSkrg = today.getMonth()+1;
+                            var thn = thnExt.toString().substr(-2);
+                            var bln = month[bulanExt-1];
+                            var hsl = bln + " " + thn;
+                            if (bulanExt != bulanSkrg) {
+                                html += '<option value='+bulanExt+'>'+hsl+'</option>';
+                            }else {
+                                html += '<option selected value='+bulanExt+'>'+hsl+'</option>';
+                            }
+                            
+                        }
+                        $('#blnNow').html(html);
+                        getTotalTransaksi();
+                    }
+                });
+            }
+
+            
+            function getTotalTransaksi() {
+                var optionValue = $("#blnNow option:selected").val();
+                // alert("Selected Option Text: "+optionValue);
+                console.log("Bulan :", optionValue);
+                // return optionValue;
+                $.ajax(
+                {
+                    type : "POST",
+                    url  : "<?php echo site_url()?>/Home/ttlTransaksiPerbulan",
+                    dataType : "JSON",
+                    data : {bln:optionValue},
+                    success: function(data){
+                        var i;
+                        for(i=0; i<data.length; i++){
+                            var result = data[i].total;
+                            document.getElementById("demo").innerHTML = result;
+                        }
+                        console.log("Result :", result);
+
+                    }
+                });
+            }
+
+            function getPendpatanPerBulan() {
+                
+                // $.ajax(
+                // {
+                //     type : "POST",
+                //     url  : "<?php echo site_url()?>/Home/ttlTransaksiPerbulan",
+                //     dataType : "JSON",
+                //     data : {bln:optionValue},
+                //     success: function(data){
+                //         var result = data.total;
+                //         console.log("Result :", result);
+
+                //     }
+                // });
+            }
+
+        });
         
     </script>
 </body>

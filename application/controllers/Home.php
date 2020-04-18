@@ -6,12 +6,25 @@ class Home extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		//Do your magic here
+		$this->load->model('Model_home');
 	}
 
 	public function index()
 	{
 		$this->load->view('home/viewHome');
+	}
+
+	public function getMonth()
+	{
+		$data 	= $this->Model_home->getDatePenjualan();
+        echo json_encode($data);
+	}
+
+	public function ttlTransaksiPerbulan()
+	{
+		$bln = $this->input->post('bln');
+		$data 	= $this->Model_home->ttlTransaksiPerbulan($bln);
+        echo json_encode($data);
 	}
 
 }
