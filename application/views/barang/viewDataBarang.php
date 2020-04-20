@@ -375,7 +375,7 @@
                         var i;
                         for(i=0; i<data.length; i++){
                             html += '<tr>'+
-                                        '<td >'+data[i].kd_barang+'</td>'+
+                                        '<td>'+data[i].kd_barang+'</td>'+
                                         '<td>'+data[i].kategori+'</td>'+
                                         '<td>'+data[i].nama_barang+'</td>'+
                                         '<td>'+data[i].warna+'</td>'+

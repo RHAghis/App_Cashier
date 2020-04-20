@@ -27,6 +27,13 @@ class Home extends CI_Controller {
         echo json_encode($data);
 	}
 
+	public function ttlPendapatanPerbulan()
+	{
+		$bln = $this->input->post('bln');
+		$data 	= $this->Model_home->ttlPendapatanPerbulan($bln);
+        echo json_encode($data);
+	}
+
 }
 
 /* End of file Home.php */

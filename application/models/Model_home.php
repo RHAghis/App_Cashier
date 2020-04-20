@@ -5,7 +5,7 @@ class Model_home extends CI_Model {
 
 	public function getDatePenjualan()
 	{
-		$hasil=$this->db->query("SELECT tgl FROM penjualan");
+		$hasil=$this->db->query("SELECT DISTINCT MONTH(tgl) as bln, YEAR(tgl) as thn FROM penjualan");
         return $hasil->result();
 	}
 
@@ -17,7 +17,7 @@ class Model_home extends CI_Model {
 
 	public function ttlPendapatanPerbulan($bln)
 	{
-		$hasil=$this->db->query("SELECT COUNT(kd_penjualan) as total FROM penjualan WHERE month(tgl) = '$bln'");
+		$hasil=$this->db->query("SELECT SUM(total) as total from penjualan where MONTH(tgl) = '$bln'");
         return $hasil->result();
 	}
 	
