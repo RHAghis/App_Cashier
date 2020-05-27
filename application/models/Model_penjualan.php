@@ -5,7 +5,7 @@ class Model_penjualan extends CI_Model {
 
 	public function getDataPenjualan()
 	{
-		$hasil=$this->db->query("SELECT * FROM penjualan");
+		$hasil=$this->db->query("SELECT CAST(kd_penjualan as signed) as kd_penjualan, tgl, jam, customer, total FROM penjualan ORDER BY kd_penjualan ASC");
         return $hasil->result();
 	}
 
@@ -102,7 +102,7 @@ class Model_penjualan extends CI_Model {
 
     public function getIdPenjualan()
     {
-    	$hasil=$this->db->query("SELECT kd_penjualan FROM penjualan ORDER BY kd_penjualan DESC LIMIT 1");
+    	$hasil=$this->db->query("SELECT CAST(kd_penjualan as signed) as kd_penjualan FROM penjualan ORDER BY kd_penjualan DESC LIMIT 1");
         return $hasil->result();
     }
 
@@ -115,6 +115,12 @@ class Model_penjualan extends CI_Model {
     public function getIdBarWithName($nama_barang)
     {
     	$hasil=$this->db->query("SELECT kd_barang FROM barang WHERE nama_barang = '$nama_barang'");
+        return $hasil;
+    }
+
+    public function printStruct($kd_penjualan)
+    {
+    	$hasil=$this->db->query("SELECT * FROM det_penjualan WHERE kd_penjualan = '$kd_penjualan'");
         return $hasil;
     }
 }

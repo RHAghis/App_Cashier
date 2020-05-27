@@ -148,6 +148,12 @@ class Penjualan extends CI_Controller {
 		echo json_encode($data);
     }
 
+    public function cetakStruk($kd_penjualan)
+    {
+    	$data['transaksi']		= 	$this->Model_penjualan->printStruct($kd_penjualan);
+    	$this->load->view('cetakStruk', $data);
+    }
+
 }
 
 /* End of file Penjualan.php */

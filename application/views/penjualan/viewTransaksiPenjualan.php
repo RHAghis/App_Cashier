@@ -198,9 +198,9 @@
                                                 <div class="col-xs-5" style="padding-right:20px">
                                                     <button class="btn btn-rounded btn-success" id="simpanTransaksi">Simpan</button> 
                                                 </div>
-                                                <div class="col-xs-5">
+                                                <!-- <div class="col-xs-5">
                                                     <button class="btn btn-rounded btn-warning" id="cetakStruk">Cetak</button>
-                                                </div>
+                                                </div> -->
                                             </div>
                                         </div>
                                     </div>
@@ -560,13 +560,26 @@
                             });
                         }
                         Swal.fire({
-                          position: 'center',
-                          icon: 'success',
-                          title: 'Transakasi Berhasil Tersimpan',
-                          showConfirmButton: false,
-                          timer: 2000
+                          title: 'Simpan Dulu Yaa Kakak..',
+                          text: "Terima Kasih ^_^",
+                          icon: 'warning',
+                          showCancelButton: true,
+                          confirmButtonColor: '#3085d6',
+                          cancelButtonColor: '#d33',
+                          confirmButtonText: 'Simpan'
+                        }).then((result) => {
+                          if (result.value) {
+                            Swal.fire
+                            ({
+                              title: 'Tersimpan!',
+                              text: 'Transaksi Telah Tersimpan',
+                              icon: 'success',
+                              confirmButtonColor: '#3085d6',
+                              confirmButtonText: '<a href="<?php echo site_url('Penjualan/cetakStruk/')?>"'+kd_penjualan+ 'style="color:#ffffff">Cetak Struk</a>',
+                            })
+                          }
                         })
-                        window.location.reload();
+                        //window.location.reload();
                     }
                 });
                 return false;
